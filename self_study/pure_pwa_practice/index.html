@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#FFFFFF">
+    <meta name="viewport" content="width=device-width, initial-scale=no">
+    <link rel="shortcut icon" href="images/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+    <title>Test PWA</title>
+    <style>
+        html, body {
+            height: 100%;
+            background-color: #F3A530;
+            color: white;
+        }
+
+        .container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hello PWA</h1>
+        <img src="images/hello-pwa.png" alt=""/>
+        <p>by JS</p>
+    </div>
+    <!-- Register service worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register('/service_worker.js')
+                .then(function () {
+                    console.log('Registered Service Worker')
+                })
+        }
+    </script>
+</body>
+</html>

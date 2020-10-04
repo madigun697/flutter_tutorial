@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/vuex"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ sTitle }}</h1>
+        <com-counter msg="Counter1"></com-counter>
+        <com-counter msg="Counter2"></com-counter>
+    </div>
+</body>
+
+<script>
+    const store = new Vuex.Store({
+        state: {
+            count: 0
+        },
+        mutations: {
+            fnIncData: state => state.count++,
+            fnDecData: state => state.count--
+        },
+        getters: {
+            fnGetData: state => state.count
+        },
+        actions: {
+            async fnDecData({
+                commit
+            }, state) {
+                const result = await api.fnDecrement();
+                if (result == true) commit('fnDecData')
+            }
+        }
+    })
+
+    const api = {
+        fnDecrement() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(true);
+                }, 1000);
+            })
+        }
+    }
+
+    Vue.component('com-counter', {
+        props: ['msg'],
+        template: `
+            <div>
+                <h2>{{ msg }}</h2>
+                <p>Counter: {{ fnGetCount }}</p>
+                <button @click="fnIncCount">Plus</button>
+                <button @click="fnDecCount">Minus</button>
+                <hr>
+            </div>
+        `,
+        computed: {
+            fnGetCount() {
+                return store.getters.fnGetData;
+            }
+        },
+        methods: {
+            fnIncCount() {
+                store.commit('fnIncData')
+            },
+            fnDecCount() {
+                store.dispatch('fnDecData')
+            }
+        }
+    })
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            sTitle: 'Hello'
+        }
+    })
+</script>
+</html>

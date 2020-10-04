@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello</h1>
+        <router-view></router-view>
+        <hr>
+        <p>Router
+            <router-link to="/main">Move to main page</router-link>
+            <router-link to="/sub">Move to sub page</router-link>
+        </p>
+    </div>
+    <script>
+        const tmMain = {
+            template: '<h2>Main Page</h2>'
+        }
+        const tmSub = {
+            template: '<h2>Sub Page</h2>'
+        }
+        const rtRoutes = [{
+            path: '/main',
+            component: tmMain
+        },
+        {
+            path: '/sub',
+            component: tmSub
+        }
+    ]
+    const router = new VueRouter({
+        routes: rtRoutes
+    })
+    var gApp = new Vue({
+        el: '#app',
+        router
+    })
+    </script>
+</body>
+</html>

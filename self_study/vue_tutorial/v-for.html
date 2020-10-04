@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id = "main">
+        <h1>What's your favorite fruits?</h1>
+        <ol>
+            <li v-for="item in aFruits">
+                {{ item.sFruitName }}
+            </li>
+        </ol>
+    </div>
+    <script>
+        var main = new Vue({
+            el: '#main',
+            data: {
+                aFruits: [
+                    { sFruitName: 'Apple' },
+                    { sFruitName: 'Banana' },
+                    { sFruitName: 'Grape' }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

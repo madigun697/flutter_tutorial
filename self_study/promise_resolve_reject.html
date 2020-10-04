@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="
+        console.log('Start');
+        let bStatus = Math.random() > 0.5;
+        fnCreatePromise(bStatus)
+            .then(pResult => console.log(pResult))
+            .then(pErrMsg => console.log(pErrMsg));
+        console.log('End');
+    ">Start!</button>
+
+    <script>
+        function fnCreatePromise(pStatus) {
+            return new Promise((fnResolve, fnReject) => {
+                setTimeout(() => {
+                    if (pStatus) fnResolve('Good');
+                    else fnReject('Bad');
+                }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>

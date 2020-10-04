@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="fnDoAsyncFunc()">Start Async & Await</button>
+
+    <script>
+        async function fnDoAsyncFunc() {
+            console.log(await fnProductReady(1, 2000));
+            console.log(await fnProductReady(2, 1000));
+            console.log(await fnProductReady(3, 500));
+        }
+
+        function fnProductReady(pNum, pTime) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log(pNum);
+                    resolve('Good');
+                }, pTime);
+            });
+        }
+    </script>
+</body>
+</html>
