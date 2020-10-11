@@ -62,9 +62,8 @@ class _SignInState extends State<SignIn> {
                     if (_formKey.currentState.validate()) {
                       dynamic result = await _auth.signInWithEmailAndPassword(
                           email, password);
-                      if (result == null) {
-                        setState(() => error =
-                            'Please check your email and password again');
+                      if (result is String) {
+                        setState(() => error = result);
                       }
                     }
                   }),

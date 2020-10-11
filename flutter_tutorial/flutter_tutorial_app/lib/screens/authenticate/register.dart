@@ -18,6 +18,11 @@ class _RegisterState extends State<Register> {
   String password = '';
   String error = '';
 
+  // void check_valid_email(text) {
+  //   var regExp = new RegExp(r".*@.*\..*");
+  //   print(regExp.allMatches(text).isNotEmpty);
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

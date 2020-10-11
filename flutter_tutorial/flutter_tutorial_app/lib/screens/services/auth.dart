@@ -6,6 +6,7 @@ class AuthService {
 
   // create user object based on FirebaseUser
   AppUser _userFromFirebaseUser(User user) {
+    print(user);
     return user != null ? AppUser(uid: user.uid) : null;
   }
 
@@ -36,8 +37,9 @@ class AuthService {
       User user = result.user;
       return _userFromFirebaseUser(user);
     } catch (e) {
-      print(e.toString());
-      return null;
+      // [firebase_auth/user-not-found] There is no user record corresponding to this identifier. The user may have been deleted.
+      // [firebase_auth/wrong-password] The password is invalid or the user does not have a password.
+      return e.toString().split('] ')[1];
     }
   }
 
