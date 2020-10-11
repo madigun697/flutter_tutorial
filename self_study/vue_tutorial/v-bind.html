@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .blue_style { color: blue }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id='main'>
+        <h1 v-bind:class="sColorName + '_style'">Hello</h1>
+        <input :value="sDate">
+    </div>
+    <script>
+        let app = new Vue({
+            el: '#main',
+            data: {
+                sDate: 'This year is ' + new Date().getFullYear(),
+                sColorName: 'blue'
+            }
+        })
+    </script>
+</body>
+</html>

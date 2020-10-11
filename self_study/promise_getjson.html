@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="
+        fetch('./data.json')
+            .then(pRes => pRes.text())
+            .then(pJSON => console.log(pJSON));
+    ">Read JSON local</button>
+
+    <button onclick="
+        fetch('https://cors-anywhere.herokuapp.com/' + 'https://jsonplaceholder.typicode.com/posts/1')
+            .then(pRes => pRes.text())
+            .then(pJSON => console.log(pJSON));
+    ">Read JSON remote</button>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@3.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css", rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <v-app>
+            <v-app-bar app>
+                <v-app-bar-nav-icon></v-app-bar-nav-icon>
+                <v-toolbar-title>Header</v-toolbar-title>
+            </v-app-bar>
+            <v-content>
+                Hello
+                <v-container>Contents</v-container>
+            </v-content>
+            <v-footer>
+                <div>Footer</div>
+            </v-footer>
+        </v-app>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            vuetify: new Vuetify()
+        })
+    </script>
+</body>
+</html>

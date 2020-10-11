@@ -1,0 +1,7 @@
+{
+    "items": [
+        {"name": "Grace", "age": 33, "email": "grace@gmail.com"},
+        {"name": "Kyle", "age": 35, "email": "kyle@gmail.com"},
+        {"name": "John", "age": 30, "email": "john@gmail.com"}
+    ]
+}

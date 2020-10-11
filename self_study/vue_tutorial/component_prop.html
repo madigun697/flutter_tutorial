@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Document</title>
+    <script>
+        Vue.component('favorite_fruits', {
+            props: ['fruit'],
+            template: `<li>{{ fruit.text }}</li>`
+        })
+    </script>
+</head>
+<body>
+    <div id='app'>
+        <h1>Favorite Frutis</h1>
+        <ol>
+            <favorite_fruits v-for="item in aFruits" v-bind:fruit="item" v-bind:key="item.id"></favorite_fruits>
+        </ol>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            aFruits: [
+                {id: 0, text: 'apple'},
+                {id: 1, text: 'banana'},
+                {id: 2, text: 'grape'}
+            ]
+        }
+    })
+</script>
+</html>

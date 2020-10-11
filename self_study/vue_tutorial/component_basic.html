@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Document</title>
+    <style>
+        .fruit_style {
+            border: 1px solid #ccc;
+            background-color: white;
+            padding-left: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div id = "main">
+        <h1>{{ sTitle }}</h1>
+        <favorite-fruits></favorite-fruits>
+        <favorite-fruits></favorite-fruits>
+    </div>
+</body>
+<script>
+    Vue.component('favorite-fruits', {
+        data: function () {
+            return {
+                aFruits: [
+                    {sFruit_name: 'Apple'},
+                    {sFruit_name: 'Banana'},
+                    {sFruit_name: 'Grape'}
+                ]
+            }
+        },
+        template : `
+            <div>
+                <div v-for="item in aFruits" class="fruit_style">
+                    <p>Favorite Fruit: {{ item.sFruit_name }}</p>
+                </div>
+                <br/>
+            </div>
+        `
+    });
+    new Vue({
+        el: '#main',
+        data: {
+            sTitle: 'Favorite Fruits!'
+        }
+    });
+</script>
+</html>
