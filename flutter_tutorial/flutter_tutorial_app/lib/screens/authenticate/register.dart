@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorial_app/screens/services/auth.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   final Function toggleView;
-  SignIn({this.toggleView});
+  Register({this.toggleView});
 
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
@@ -25,14 +25,14 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
         elevation: 0.0,
-        title: Text('Sign In'),
+        title: Text('Sign Up'),
         actions: <Widget>[
           FlatButton.icon(
               onPressed: () {
                 widget.toggleView();
               },
-              icon: Icon(Icons.person_add),
-              label: Text('Register'))
+              icon: Icon(Icons.person),
+              label: Text('Sign In'))
         ],
       ),
       body: Container(
@@ -48,7 +48,8 @@ class _SignInState extends State<SignIn> {
                   }),
               SizedBox(height: 20.0),
               TextFormField(
-                  validator: (val) => val.isEmpty ? 'Enter a password' : null,
+                  validator: (val) =>
+                      val.length < 6 ? 'Enter a password 6+ chars long' : null,
                   obscureText: true,
                   onChanged: (val) {
                     setState(() => password = val);
@@ -56,15 +57,14 @@ class _SignInState extends State<SignIn> {
               SizedBox(height: 20.0),
               RaisedButton(
                   color: Colors.black87,
-                  child: Text('Sign In', style: TextStyle(color: Colors.white)),
+                  child:
+                      Text('Register', style: TextStyle(color: Colors.white)),
                   onPressed: () async {
-                    print(_formKey.currentState.validate());
                     if (_formKey.currentState.validate()) {
-                      dynamic result = await _auth.signInWithEmailAndPassword(
+                      dynamic result = await _auth.registerWithEmailAndPassword(
                           email, password);
                       if (result == null) {
-                        setState(() => error =
-                            'Please check your email and password again');
+                        setState(() => error = 'please supply a valid email');
                       }
                     }
                   }),
