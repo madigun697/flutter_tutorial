@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:363454748293:android:5f76f25c9da03f76563bec",
+        "mobilesdk_app_id": "1:363454748293:android:afd8b3d3afd2e2f8563bec",
         "android_client_info": {
-          "package_name": "com.smarttracker.clairvoyance"
+          "package_name": "com.tutorial.flutter"
         }
       },
       "oauth_client": [
@@ -30,6 +30,13 @@
             {
               "client_id": "363454748293-g95churr4jvkpnppc3qdaoq9nbrd4kvt.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "363454748293-plkf3s35i0n3pecptpobnoulma9nf2c6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tutorial.flutter"
+              }
             }
           ]
         }
