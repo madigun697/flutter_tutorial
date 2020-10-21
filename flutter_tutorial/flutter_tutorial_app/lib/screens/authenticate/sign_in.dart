@@ -71,6 +71,17 @@ class _SignInState extends State<SignIn> {
                       }
                     }
                   }),
+              SizedBox(height: 20.0),
+              RaisedButton(
+                  color: Colors.black87,
+                  child: Text('Google Sign In',
+                      style: TextStyle(color: Colors.white)),
+                  onPressed: () async {
+                    dynamic result = await _auth.signInGoogle();
+                    if (result is String) {
+                      setState(() => error = result);
+                    }
+                  }),
               SizedBox(height: 12.0),
               Text(
                 error,

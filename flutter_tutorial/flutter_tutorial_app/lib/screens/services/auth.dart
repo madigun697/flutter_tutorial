@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_tutorial_app/models/user.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _google_signin = GoogleSignIn();
 
   // create user object based on FirebaseUser
   AppUser _userFromFirebaseUser(User user) {
@@ -26,6 +28,27 @@ class AuthService {
     } catch (e) {
       print(e.toString());
       return null;
+    }
+  }
+
+  // sign in using google account
+  // https://blog.codemagic.io/firebase-authentication-google-sign-in-using-flutter/
+  // https://blog.naver.com/PostView.nhn?blogId=ndtid0106&logNo=221743818945&parentCategoryNo=&categoryNo=60&viewDate=&isShowPopularPosts=false&from=postView
+  Future signInGoogle() async {
+    try {
+      final GoogleSignInAccount _account = await _google_signin.signIn();
+      final GoogleSignInAuthentication _google_auth =
+          await _account.authentication;
+
+      final AuthCredential _cridential = GoogleAuthProvider.credential(
+          accessToken: _google_auth.accessToken, idToken: _google_auth.idToken);
+
+      UserCredential result = await _auth.signInWithCredential(_cridential);
+      User user = result.user;
+      return _userFromFirebaseUser(user);
+    } catch (e) {
+      print(e.toString());
+      return "Error: " + e.toString();
     }
   }
 
