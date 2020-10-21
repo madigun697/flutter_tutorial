@@ -25,7 +25,19 @@ class Home extends StatelessWidget {
           ],
         ),
         body: Container(
-          child: Text(this.user.uid),
-        ));
+            padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+            child: Row(children: <Widget>[
+              Image(
+                image: NetworkImage(this.user.photo),
+              ),
+              Expanded(
+                  child: Container(
+                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      child: Text(
+                        this.user.name + "\n" + this.user.email,
+                        textAlign: TextAlign.left,
+                        style: TextStyle(),
+                      ))),
+            ])));
   }
 }

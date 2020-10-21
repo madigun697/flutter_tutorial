@@ -9,7 +9,23 @@ class AuthService {
   // create user object based on FirebaseUser
   AppUser _userFromFirebaseUser(User user) {
     print(user);
-    return user != null ? AppUser(uid: user.uid) : null;
+    if (user.isAnonymous) {
+      return user != null
+          ? AppUser(
+              uid: user.uid,
+              name: 'Ananymous',
+              email: 'Unknown',
+              photo: 'default')
+          : null;
+    } else {
+      return user != null
+          ? AppUser(
+              uid: user.uid,
+              name: user.displayName,
+              email: user.email,
+              photo: user.photoURL)
+          : null;
+    }
   }
 
   // auth change user stream

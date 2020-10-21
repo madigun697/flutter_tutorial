@@ -1,6 +1,9 @@
 class AppUser {
   final String uid;
-  AppUser({this.uid});
+  final String name;
+  final String email;
+  final String photo;
+  AppUser({this.uid, this.name, this.email, this.photo});
 
   // Firebase User Sample
   // User(displayName: null, email: test2@test.com, emailVerified: false,
