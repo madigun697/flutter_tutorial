@@ -28,7 +28,9 @@ class Home extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
             child: Row(children: <Widget>[
               Image(
-                image: NetworkImage(this.user.photo),
+                image: this.user.photo != null
+                    ? NetworkImage(this.user.photo)
+                    : AssetImage('lib/assets/default_photo.png'),
               ),
               Expanded(
                   child: Container(
