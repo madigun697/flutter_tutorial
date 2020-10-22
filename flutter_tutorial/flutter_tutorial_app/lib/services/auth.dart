@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_tutorial_app/models/user.dart';
+import 'package:flutter_tutorial_app/services/database.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
@@ -75,7 +76,7 @@ class AuthService {
     } catch (e) {
       // [firebase_auth/user-not-found] There is no user record corresponding to this identifier. The user may have been deleted.
       // [firebase_auth/wrong-password] The password is invalid or the user does not have a password.
-      return e.toString().split('] ')[1];
+      return e.toString();
     }
   }
 
@@ -85,6 +86,10 @@ class AuthService {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User user = result.user;
+
+      // create a new document for the user with the uid
+      await DatabaseService(uid: user.uid)
+          .updateUserData(user.displayName, user.email, user.photoURL);
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
