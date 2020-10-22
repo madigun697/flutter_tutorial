@@ -70,7 +70,6 @@ class _SignInState extends State<SignIn> {
                         child: Text('Sign In',
                             style: TextStyle(color: Colors.white)),
                         onPressed: () async {
-                          print(_formKey.currentState.validate());
                           if (_formKey.currentState.validate()) {
                             setState(() => loading = true);
                             dynamic result = await _auth
