@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_tutorial_app/models/package.dart';
+import 'package:flutter_tutorial_app/screens/home/package_tile.dart';
 import 'package:provider/provider.dart';
 
 class PackageList extends StatefulWidget {
@@ -10,11 +11,13 @@ class PackageList extends StatefulWidget {
 class _PackageListState extends State<PackageList> {
   @override
   Widget build(BuildContext context) {
-    final packages = Provider.of<QuerySnapshot>(context);
+    final packages = Provider.of<List<Package>>(context) ?? [];
 
-    for (var doc in packages.docs) {
-      print(doc.data());
-    }
-    return Container();
+    return ListView.builder(
+      itemCount: packages.length,
+      itemBuilder: (context, index) {
+        return PackageTile(package: packages[index]);
+      },
+    );
   }
 }

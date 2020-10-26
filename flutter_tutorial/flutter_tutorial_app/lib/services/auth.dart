@@ -13,13 +13,20 @@ class AuthService {
     if (user != null) {
       if (user.isAnonymous) {
         return AppUser(
-            uid: user.uid, name: 'Ananymous', email: 'Unknown', photo: null);
+            uid: user.uid,
+            name: 'Ananymous',
+            email: 'Unknown',
+            photo: null,
+            gender: 'Others',
+            level: 0);
       } else {
         return AppUser(
             uid: user.uid,
             name: user.displayName != null ? user.displayName : 'Unknown',
             email: user.email,
-            photo: user.photoURL);
+            photo: user.photoURL,
+            gender: 'Others',
+            level: 0);
       }
     } else {
       return null;
@@ -60,8 +67,8 @@ class AuthService {
       UserCredential result = await _auth.signInWithCredential(_cridential);
       User user = result.user;
 
-      await DatabaseService(uid: user.uid)
-          .updateUserData(user.displayName, user.email, user.photoURL);
+      await DatabaseService(uid: user.uid).signupUserData(
+          user.displayName, user.email, user.photoURL, 'Others', 100);
 
       return _userFromFirebaseUser(user);
     } catch (e) {
@@ -92,8 +99,8 @@ class AuthService {
       User user = result.user;
 
       // create a new document for the user with the uid
-      await DatabaseService(uid: user.uid)
-          .updateUserData(user.displayName, user.email, user.photoURL);
+      await DatabaseService(uid: user.uid).signupUserData(
+          user.displayName, user.email, user.photoURL, 'Others', 100);
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());

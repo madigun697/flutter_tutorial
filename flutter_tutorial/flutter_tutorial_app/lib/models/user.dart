@@ -3,7 +3,10 @@ class AppUser {
   final String name;
   final String email;
   final String photo;
-  AppUser({this.uid, this.name, this.email, this.photo});
+  final String gender;
+  final int level;
+  AppUser(
+      {this.uid, this.name, this.email, this.photo, this.gender, this.level});
 
   // Firebase User Sample
   // User(displayName: null, email: test2@test.com, emailVerified: false,
@@ -14,4 +17,15 @@ class AppUser {
   // UserInfo(displayName: null, email: test2@test.com, phoneNumber: null,
   // photoURL: null, providerId: password, uid: test2@test.com)],
   // refreshToken: , tenantId: null, uid: BbAdbtC58PQfQ0k0Ki82VOjmEq83)
+}
+
+class UserData {
+  final String uid;
+  final String name;
+  final String email;
+  final String photo;
+  final String gender;
+  final int level;
+  UserData(
+      {this.uid, this.name, this.email, this.photo, this.gender, this.level});
 }
