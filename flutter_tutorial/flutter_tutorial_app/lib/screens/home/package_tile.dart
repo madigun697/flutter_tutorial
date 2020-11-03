@@ -17,7 +17,7 @@ class PackageTile extends StatelessWidget {
               radius: 25.0,
               backgroundImage: package.photoURL != null
                   ? NetworkImage(package.photoURL)
-                  : AssetImage('lib/assets/default_photo.png'),
+                  : AssetImage('assets/default_photo.png'),
             ),
             title: Text(package.name + " (" + package.level.toString() + ")"),
             subtitle: Text(package.email),
